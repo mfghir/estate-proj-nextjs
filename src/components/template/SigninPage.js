@@ -8,11 +8,13 @@ import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
 
+import { signIn } from "next-auth/react";
+
 const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const signinHandler = async (e) => {
