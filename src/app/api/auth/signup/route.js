@@ -1,9 +1,10 @@
 import User from "@/models/User";
 import { hashPassword } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
+
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function POST(req) {
   try {
     await connectDB();
 
@@ -25,9 +26,7 @@ export async function POST() {
     if (existingUser) {
       return NextResponse.json(
         { error: "این حساب کاربری وجود دارد" },
-        {
-          status: 422,
-        }
+        {status: 422}
       );
     }
 
@@ -47,9 +46,7 @@ export async function POST() {
     console.log(err);
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
-      {
-        status: 500,
-      }
+      {status: 500}
     );
   }
 }
