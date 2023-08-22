@@ -1,3 +1,4 @@
+import { p2e } from "@/utils/replaceNumber";
 import styles from "./TextInput.module.css";
 
 const TextInput = ({
@@ -9,7 +10,7 @@ const TextInput = ({
 }) => {
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setProfileData({ ...profileData, [name]: value });
+    setProfileData({ ...profileData, [name]: p2e(value) });
   };
 
   return (
