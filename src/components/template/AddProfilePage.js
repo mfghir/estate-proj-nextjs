@@ -1,6 +1,10 @@
 "use client";
+
 import TextInput from "@/module/TextInput";
 import styles from "./AddProfilePage.module.css";
+import RadioList from "@/module/RadioList";
+
+import { useState } from "react";
 
 const AddProfilePage = () => {
   const [profileData, setProfileData] = useState({
@@ -20,7 +24,6 @@ const AddProfilePage = () => {
     console.log(profileData);
   };
 
-  
   return (
     <div className={styles.container}>
       <h3>ثبت آگهی</h3>
@@ -63,7 +66,7 @@ const AddProfilePage = () => {
         profileData={profileData}
         setProfileData={setProfileData}
       />
-
+      <RadioList profileData={profileData} setProfileData={setProfileData} />
       <button className={styles.submit} onClick={submitHandler}>
         ثبت آگهی
       </button>
