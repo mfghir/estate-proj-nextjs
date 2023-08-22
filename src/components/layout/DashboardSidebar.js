@@ -12,7 +12,7 @@ const DashboardSidebar = async ({ children }) => {
     <div className={styles.container}>
       <div className={styles.sidebar}>
         <CgProfile />
-        <p>{session.user.email}</p>
+        <p>{session?.user.email}</p>
         <span></span>
 
         <Link href="/dashboard">حساب کاربری</Link>
