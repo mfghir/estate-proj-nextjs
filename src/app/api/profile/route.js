@@ -1,5 +1,6 @@
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
+import { Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
@@ -38,6 +39,43 @@ export async function POST(req) {
         { status: 404 }
       );
     }
+
+    if (
+      !title ||
+      !description ||
+      !location ||
+      !phone ||
+      !price ||
+      !realState ||
+      !constructionDate ||
+      !category
+    ) {
+      return NextResponse.json(
+        { error: "لطفا اطلاعات معتبر وارد کنید" },
+        { status: 400 }
+      );
+    }
+
+    const newProfile = await Profile.create({
+      title,
+      description,
+      location,
+      phone,
+      price: +price, //changing to number
+      realState,
+      constructionDate,
+      category,
+      rules,
+      amenities,
+      userId: new Types.ObjectId(user._id),
+    });
+
+    console.log(newProfile);
+    return NextResponse.json(
+        { error: "آگهی جدید اضافه شد" },
+        { status: 201 }
+      ); 
+
   } catch (err) {
     console.log(err);
     return NextResponse.json(
