@@ -6,6 +6,7 @@ import RadioList from "@/module/RadioList";
 
 import { useState } from "react";
 import { TextList } from "@/module/TextList";
+import CustomDatePicker from "@/module/CustomDatePicker";
 
 const AddProfilePage = () => {
   const [profileData, setProfileData] = useState({
@@ -80,6 +81,11 @@ const AddProfilePage = () => {
         profileData={profileData}
         setProfileData={setProfileData}
         type="rules"
+      />
+
+      <CustomDatePicker
+        profileData={profileData}
+        setProfileData={setProfileData}
       />
 
       <button className={styles.submit} onClick={submitHandler}>
