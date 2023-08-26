@@ -31,9 +31,7 @@ export async function POST(req) {
       );
     }
 
-    const user = await User.findOne({ email: session.user.email });
-    console.log(user);
-
+    const user = await User.findOne({ email: session.user.email })
     if (!user) {
       return NextResponse.json(
         { error: "حساب کاربری یافت نشد" },
