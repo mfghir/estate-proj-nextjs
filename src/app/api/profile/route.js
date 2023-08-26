@@ -1,6 +1,7 @@
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { Types } from "mongoose";
+
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
