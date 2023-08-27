@@ -5,6 +5,7 @@ import { FiEdit } from "react-icons/fi";
 
 import { AiOutlineDelete } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+import { Toaster, toast } from "react-hot-toast";
 
 const DashboardCard = ({ data }) => {
   const router = useRouter();
@@ -13,7 +14,18 @@ const DashboardCard = ({ data }) => {
     router.push(`/dashboard/my-profiles/${data._id}`);
   };
 
-  const deleteHandler = () => {};
+  const deleteHandler = async () => {
+    const res = await fetch(`/api/profile/delete/${data._id}`, {
+      method: "DELETE",
+    });
+    const result = await res.json();
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success(result.message);
+      router.refresh()
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -28,6 +40,7 @@ const DashboardCard = ({ data }) => {
           <AiOutlineDelete />
         </button>
       </div>
+      <Toaster />
     </div>
   );
 };
