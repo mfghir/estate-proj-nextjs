@@ -1,10 +1,27 @@
+"use client"
 import styles from "./DashboardCard.module.css";
 import Card from "./Card";
+import { FiEdit } from "react-icons/fi";
 
-const DashboardCard = ({data}) => {
+import { AiOutlineDelete } from "react-icons/ai";
+
+const DashboardCard = ({ data }) => {
+  const editHandler = () => {};
+  const deleteHandler = () => {};
+
   return (
-    <div>
+    <div className={styles.container}>
       <Card data={data} />
+      <div className={styles.main}>
+        <button onClick={editHandler}>
+          ویرایش
+          <FiEdit />
+        </button>
+        <button onClick={deleteHandler}>
+          حذف آگهی
+          <AiOutlineDelete />
+        </button>
+      </div>
     </div>
   );
 };
