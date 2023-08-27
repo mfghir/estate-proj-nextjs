@@ -1,12 +1,18 @@
-"use client"
+"use client";
 import styles from "./DashboardCard.module.css";
 import Card from "./Card";
 import { FiEdit } from "react-icons/fi";
 
 import { AiOutlineDelete } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 const DashboardCard = ({ data }) => {
-  const editHandler = () => {};
+  const router = useRouter();
+
+  const editHandler = () => {
+    router.push(`/dashboard/my-profiles/${data._id}`);
+  };
+
   const deleteHandler = () => {};
 
   return (
