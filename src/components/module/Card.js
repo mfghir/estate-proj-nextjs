@@ -9,7 +9,7 @@ import { RiHome3Line } from "react-icons/ri";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiLeftArrowAlt } from "react-icons/bi";
 
-const Card = ({ data: { category, title, location, price } }) => {
+const Card = ({ data: { _id, category, title, location, price } }) => {
   const icons = {
     villa: <RiHome3Line />,
     apartment: <MdApartment />,
@@ -25,7 +25,7 @@ const Card = ({ data: { category, title, location, price } }) => {
         {location}
       </p>
       <span>{sp(price)} تومان</span>
-      <Link href={}>
+      <Link href={`/buy-residential/${_id}`}>
         مشاهده آگهی
         <BiLeftArrowAlt />
       </Link>
