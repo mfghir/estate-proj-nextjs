@@ -8,7 +8,9 @@ const BuyResidential = async () => {
   });
   const data = await res.json();
 
-  return <BuyResidentialPage data={data} />;
+  if(data.error) return <h3>مشکلی پیش آمده است</h3>
+
+  return <BuyResidentialPage data={data.data} />;
 };
 
 export default BuyResidential;
