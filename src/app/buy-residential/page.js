@@ -1,7 +1,9 @@
-import BuyResidentialPage from "@/template/BuyResidentialPage";
+import BuyResidentialPage from '@/template/BuyResidentialPage'
 
 const BuyResidential = () => {
-  return <BuyResidentialPage />;
-};
+  return (
+    <BuyResidentialPage />
+  )
+}
 
-export default BuyResidential;
+export default BuyResidential
