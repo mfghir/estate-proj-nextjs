@@ -155,7 +155,6 @@ export async function PATCH(req) {
       { error: "آگهی با موفقیت ویرایش شد" },
       { status: 200 }
     );
-
   } catch (err) {
     console.log(err);
     return NextResponse.json(
@@ -165,22 +164,17 @@ export async function PATCH(req) {
   }
 }
 
+export async function GET(req) {
+  try {
+    await connectDB();
+    const profiles = await Profile.find().select("-userId");
 
-export async function GET(req){
-try{
-  await connectDB()
-const profiles  = await Profile.find().select("-userId")
-
-return NextResponse.json(
-  { data: profiles },
-  { status: 200 }
-)
-}catch (err) {
-  console.log(err);
-  return NextResponse.json(
-    { error: "مشکلی در سرور رخ داده است" },
-    { status: 500 }
-  )
-}
-
+    return NextResponse.json({ data: profiles }, { status: 200 });
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
+  }
 }

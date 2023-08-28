@@ -1,9 +1,14 @@
-import BuyResidentialPage from '@/template/BuyResidentialPage'
+import BuyResidentialPage from "@/template/BuyResidentialPage";
 
-const BuyResidential = () => {
-  return (
-    <BuyResidentialPage />
-  )
-}
+const BuyResidential = async () => {
+  // next when the web is put on the host, http://localhost:3000/ must change to min address of site
+  // بهتر است در کامپوننت های سرورساید از ای پی آی روت استفاده نکنیم(این مورد حالت تمرینی دارد)
+  const res = await fetch("http://localhost:3000/api/profile", {
+    cache: "no-store",
+  });
+  const data = await res.json();
 
-export default BuyResidential
+  return <BuyResidentialPage data={data} />;
+};
+
+export default BuyResidential;
