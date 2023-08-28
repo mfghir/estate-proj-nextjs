@@ -4,7 +4,7 @@ import TextInput from "@/module/TextInput";
 import styles from "./AddProfilePage.module.css";
 import RadioList from "@/module/RadioList";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextList } from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
 
