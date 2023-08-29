@@ -10,7 +10,24 @@ import { HiLocationMarker } from "react-icons/hi";
 import ItemList from "@/module/ItemList";
 import Title from "@/module/Title";
 
-const DetailsPage = () => {
+import { SiHomebridge } from "react-icons/si";
+import { AiOutlinePhone } from "react-icons/ai";
+import { e2p } from "@/utils/replaceNumber";
+
+const DetailsPage = ({
+  data: {
+    title,
+    location,
+    description,
+    amenities,
+    rules,
+    realState,
+    phone,
+    price,
+    category,
+    constructionDate,
+  },
+}) => {
   const categories = {
     apartment: "آپارتمان",
     villa: "ویلا",
@@ -27,21 +44,42 @@ const DetailsPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <h1>{data.title}</h1>
+        <h1>{title}</h1>
         <span>
           <HiLocationMarker />
-          {data.location}
+          {location}
         </span>
         <Title>توضیحات</Title>
-        <p>{data.description}</p>
+        <p>{description}</p>
 
         <Title>امکانات رفاهی</Title>
-        <ItemList data={data.amenities} />
+        <ItemList data={amenities} />
 
         <Title>قوانین</Title>
-        <ItemList data={data.rules} />
+        <ItemList data={rules} />
       </div>
-      <div className={styles.sidebar}></div>
+      <div className={styles.sidebar}>
+        <div className={styles.realState}>
+          <SiHomebridge />
+          <p>املاک {realState}</p>
+          <span>
+            <AiOutlinePhone />
+            {e2p(phone)}
+          </span>
+        </div>
+
+        <div className={styles.price}>
+          <p>
+            {icons[category]}
+            {categories[category]}
+          </p>
+          <p>{sp(price)} تومان</p>
+          <p>
+            <BiCalendarCheck />
+            {new Date(constructionDate).toLocaleDateString("fa-IR")}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
