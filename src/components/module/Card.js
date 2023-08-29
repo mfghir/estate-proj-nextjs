@@ -16,6 +16,8 @@ const Card = ({ data: { _id, category, title, location, price } }) => {
     store: <BiStore />,
     office: <GiOfficeChair />,
   };
+
+  
   return (
     <div className={styles.container}>
       <div className={styles.icon}>{icons[category]}</div>
