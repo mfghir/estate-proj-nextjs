@@ -1,19 +1,17 @@
 import styles from "./DetailsPage.module.css";
-import { GiOfficeChair } from "react-icons/gi";
+import { HiLocationMarker } from "react-icons/hi";
 import { BiCalendarCheck } from "react-icons/bi";
 
-import { BiStore } from "react-icons/bi";
-import { MdApartment } from "react-icons/md";
-import { RiHome3Line } from "react-icons/ri";
-
-import { HiLocationMarker } from "react-icons/hi";
 import ItemList from "@/module/ItemList";
 import Title from "@/module/Title";
-
 import { SiHomebridge } from "react-icons/si";
+
 import { AiOutlinePhone } from "react-icons/ai";
 import { e2p } from "@/utils/replaceNumber";
 import ShareButton from "@/module/ShareButton";
+
+import { icons } from "react-icons";
+import { categories } from "@/constants/strings";
 
 const DetailsPage = ({
   data: {
@@ -29,18 +27,7 @@ const DetailsPage = ({
     constructionDate,
   },
 }) => {
-  const categories = {
-    apartment: "آپارتمان",
-    villa: "ویلا",
-    store: "مغازه",
-    office: "دفتر",
-  };
-  const icons = {
-    villa: <RiHome3Line />,
-    apartment: <MdApartment />,
-    store: <BiStore />,
-    office: <GiOfficeChair />,
-  };
+ 
 
   return (
     <div className={styles.container}>

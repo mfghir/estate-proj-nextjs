@@ -1,29 +1,25 @@
 import Link from "next/link";
 import styles from "./Sidebar.module.css";
 import { HiFilter } from "react-icons/hi";
-const Sidebar = () => {
-  const queries = [
-    { villa: "ویلا" },
-    { apartment: "آپارتمان" },
-    { store: "مغازه" },
-    { office: "دفتر" },
-  ];
 
+import { categories } from "@/constants/strings";
+
+const Sidebar = () => {
   return (
     <div className={styles.container}>
       <p>
         <HiFilter />
         دسته بندی
       </p>
-      {queries.map((query) => (
+      {Object.keys(categories).map((i) => (
         // eslint-disable-next-line react/jsx-key
         <Link
           href={{
             pathname: "/buy-residential",
-            query: { category: Object.keys(query) },
+            query: { category: i },
           }}
         >
-          {Object.values(query)}
+          {categories[i]}
         </Link>
       ))}
 
