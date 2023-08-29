@@ -1,4 +1,3 @@
-import styles from "./ItemList.module.css";
 
 const ItemList = ({ data }) => {
   return (

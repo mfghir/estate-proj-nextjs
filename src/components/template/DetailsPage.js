@@ -13,6 +13,7 @@ import Title from "@/module/Title";
 import { SiHomebridge } from "react-icons/si";
 import { AiOutlinePhone } from "react-icons/ai";
 import { e2p } from "@/utils/replaceNumber";
+import ShareButton from "@/module/ShareButton";
 
 const DetailsPage = ({
   data: {
@@ -67,7 +68,7 @@ const DetailsPage = ({
             {e2p(phone)}
           </span>
         </div>
-
+        <ShareButton />
         <div className={styles.price}>
           <p>
             {icons[category]}
