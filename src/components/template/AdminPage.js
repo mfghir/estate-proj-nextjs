@@ -1,3 +1,4 @@
+import AdminCard from "@/module/AdminCard";
 import styles from "./AdminPage.module.css";
 
 const AdminPage = ({ profiles }) => {
@@ -8,7 +9,7 @@ const AdminPage = ({ profiles }) => {
       )}
 
       {profiles.map((i) => (
-        <p>{i.title}</p>
+        <AdminCard key={i._id} data={i} />
       ))}
     </div>
   );
