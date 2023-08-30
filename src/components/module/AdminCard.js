@@ -1,7 +1,26 @@
+"use client";
+
 import { sp } from "@/utils/replaceNumber";
 import styles from "./AdminCard.module.css";
+import { Toaster, toast } from "react-hot-toast";
 
-const AdminCard = ({ data: { title, description, location, price } }) => {
+import { useRouter } from "next/navigation";
+
+const AdminCard = ({ data: { _id, title, description, location, price } }) => {
+  const router = useRouter();
+
+  const publishHandler = async () => {
+    const res = await fetch(`/api/profile/publish/${_id}`, {
+      method: "PATCH",
+    });
+    const result = await res.json();
+
+    if (result.message) {
+      toast.success(result.message);
+      router.refresh();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h3>{title}</h3>
@@ -10,7 +29,8 @@ const AdminCard = ({ data: { title, description, location, price } }) => {
         <span>{location}</span>
         <span>{sp(price)}</span>
       </div>
-      <button>انتشار</button>
+      <button onClick={publishHandler}>انتشار</button>
+      <Toaster />
     </div>
   );
 };

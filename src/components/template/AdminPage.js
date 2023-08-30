@@ -9,7 +9,7 @@ const AdminPage = ({ profiles }) => {
       )}
 
       {profiles.map((i) => (
-        <AdminCard key={i._id} data={i} />
+        <AdminCard key={i._id} data={JSON.parse(JSON.stringify(i))} />
       ))}
     </div>
   );
