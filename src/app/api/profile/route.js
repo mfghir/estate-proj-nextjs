@@ -164,10 +164,10 @@ export async function PATCH(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET() {
   try {
     await connectDB();
-    const profiles = await Profile.find().select("-userId");
+    const profiles = await Profile.find({ published: true }).select("-userId");
 
     return NextResponse.json({ data: profiles }, { status: 200 });
   } catch (err) {
