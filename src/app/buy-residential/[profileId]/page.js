@@ -13,3 +13,14 @@ const ProfileDetail = async ({ params: { profileId } }) => {
 };
 
 export default ProfileDetail;
+
+export const generateMetaData = async ({ params: { profileId } }) => {
+  await connectDB();
+  const profile = await Profile.findOne({ _id: profileId });
+  return {
+    title: profile.title,
+    description: profile.description,
+    authors: { name: profile.realState },
+    other: { mytag: "تست" },
+  };
+};
